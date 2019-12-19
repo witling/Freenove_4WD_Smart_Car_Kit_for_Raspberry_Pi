@@ -291,5 +291,10 @@ class Server:
                     time.sleep(0.1)
             else:
                 self.buzzer.run('0')
+def main():
+    s = Server()
+    s.StartTcpServer()
+    s.sendvideo()
+
 if __name__=='__main__':
-    passS
+    main()

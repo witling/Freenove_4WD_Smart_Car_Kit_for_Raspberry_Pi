@@ -1,4 +1,5 @@
 #!/usr/bin/python 
+
 # -*- coding: utf-8 -*-
 import numpy as np
 import cv2
@@ -70,9 +71,10 @@ class VideoStreaming:
                 jpg=self.connection.read(leng[0])
                 if self.IsValidImage4Bytes(jpg):
                             image = cv2.imdecode(np.frombuffer(jpg, dtype=np.uint8), cv2.IMREAD_COLOR)
-                            if self.video_Flag:
-                                self.face_detect(image)
-                                self.video_Flag=False
+                            cv.imwrite('/tmp/record.jpg')
+                            #if self.video_Flag:
+                            #    self.face_detect(image)
+                            #    self.video_Flag=False
             except:
                 break
                   
@@ -97,6 +99,18 @@ class VideoStreaming:
             print "Connect to server Faild!: Server IP is right? Server is opend?"
             self.connect_Flag=False
 
-if __name__ == '__main__':
-    pass
+def abort(msg):
+    print '[ABORT] %s' % msg
+    exit()
 
+def main():
+    import sys
+    if len(sys.argv) < 2:
+        abort("no ip given")
+    ip = sys.argv[1]
+    print(ip)
+    s = VideoStreaming()
+    s.StartTcpClient(ip)
+
+if __name__ == '__main__':
+    main()
