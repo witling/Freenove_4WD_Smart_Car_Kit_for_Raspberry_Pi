@@ -51,15 +51,15 @@ class Server:
         self.server_socket.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEPORT,1)
         self.server_socket.bind((HOST, 8000))              
         self.server_socket.listen(1)
-        print('Server address: '+HOST)
+        print(('Server address: '+HOST))
         
         
     def StopTcpServer(self):
         try:
             self.connection.close()
             self.connection1.close()
-        except Exception ,  e:
-            print '\n'+"No client connection"
+        except Exception as  e:
+            print('\n'+"No client connection")
          
     def Reset(self):
         self.StopTcpServer()
@@ -84,7 +84,7 @@ class Server:
                 start = time.time()
                 stream = io.BytesIO()
                 # send jpeg format video stream
-                print "Start transmit ... "
+                print("Start transmit ... ")
                 for foo in camera.capture_continuous(stream, 'jpeg', use_video_port = True):
                     try:
                         self.connection.flush()
@@ -99,7 +99,7 @@ class Server:
                         stream.seek(0)
                         stream.truncate()
                     except :
-                        print "End transmit ... " 
+                        print("End transmit ... ") 
                         break
         except:
             #print "Camera unintall"
@@ -127,9 +127,9 @@ class Server:
     def readdata(self):
             try:
                 self.connection1,self.client_address1 = self.server_socket1.accept()
-                print "Client connection successful !"
+                print("Client connection successful !")
             except:
-                print "Client connect failed"
+                print("Client connect failed")
             restCmd=""
             self.server_socket1.close()
             while True:

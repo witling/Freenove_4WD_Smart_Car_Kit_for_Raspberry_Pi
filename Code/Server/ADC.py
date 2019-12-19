@@ -26,7 +26,7 @@ class Adc:
             self.value = self.analogRead(2)   #read the ADC value of channel 0,1,2,3
             #analogWrite(value)      #write the DAC value
             self.voltage = self.value / 256.0 * 3.3  #calculate the voltage value
-            print ('ADC Value : %d, Voltage : %.2f'%(self.value,self.voltage))
+            print(('ADC Value : %d, Voltage : %.2f'%(self.value,self.voltage)))
             time.sleep(0.01)
     def recvADC(self,channel):
         while(1):

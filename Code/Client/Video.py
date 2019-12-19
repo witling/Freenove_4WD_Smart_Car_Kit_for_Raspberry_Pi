@@ -92,9 +92,9 @@ class VideoStreaming:
         try:
             self.client_socket1.connect((ip, 5000))
             self.connect_Flag=True
-            print "Connecttion Successful !"
-        except Exception, e:
-            print "Connect to server Faild!: Server IP is right? Server is opend?"
+            print("Connecttion Successful !")
+        except Exception as e:
+            print("Connect to server Faild!: Server IP is right? Server is opend?")
             self.connect_Flag=False
 
 if __name__ == '__main__':
